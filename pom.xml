@@ -46,6 +46,7 @@
         <module>rest_service</module>
         <module>consuming_rest</module>
         <module>scheduling_tasks</module>
+        <module>device_detection</module>
     </modules>
 
 </project>
