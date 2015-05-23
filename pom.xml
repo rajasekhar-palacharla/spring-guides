@@ -47,6 +47,7 @@
         <module>consuming_rest</module>
         <module>scheduling_tasks</module>
         <module>device_detection</module>
+        <module>relational_data_access</module>
     </modules>
 
 </project>
