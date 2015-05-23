@@ -51,6 +51,7 @@
 
     <modules>
         <module>rest_service</module>
+        <module>consuming_rest</module>
     </modules>
 
 </project>
