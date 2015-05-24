@@ -48,6 +48,7 @@
         <module>scheduling_tasks</module>
         <module>device_detection</module>
         <module>relational_data_access</module>
+        <module>uploading_files</module>
     </modules>
 
 </project>
