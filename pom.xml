@@ -50,6 +50,7 @@
         <module>relational_data_access</module>
         <module>uploading_files</module>
         <module>authenticating_ldap</module>
+        <module>register_facebook_app</module>
     </modules>
 
 </project>
