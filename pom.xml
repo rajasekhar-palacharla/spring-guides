@@ -51,6 +51,7 @@
         <module>uploading_files</module>
         <module>authenticating_ldap</module>
         <module>register_facebook_app</module>
+        <module>messaging_redis</module>
     </modules>
 
 </project>
