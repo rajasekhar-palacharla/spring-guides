@@ -54,6 +54,7 @@
         <module>messaging_redis</module>
         <module>register_twitter_app</module>
         <module>messaging_rabbitmq</module>
+        <module>accessing_twitter</module>
     </modules>
 
 </project>
