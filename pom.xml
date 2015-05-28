@@ -56,6 +56,7 @@
         <module>messaging_rabbitmq</module>
         <module>accessing_twitter</module>
         <module>accessing_facebook</module>
+        <module>accessing_data_neo4j</module>
     </modules>
 
 </project>
