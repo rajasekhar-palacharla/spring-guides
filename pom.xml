@@ -57,6 +57,7 @@
         <module>accessing_twitter</module>
         <module>accessing_facebook</module>
         <module>accessing_data_neo4j</module>
+        <module>validating_form_input</module>
     </modules>
 
 </project>
