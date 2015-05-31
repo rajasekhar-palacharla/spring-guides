@@ -60,6 +60,7 @@
         <module>validating_form_input</module>
         <module>actuator_service</module>
         <module>messaging_jms</module>
+        <module>batch_processing</module>
     </modules>
 
 </project>
