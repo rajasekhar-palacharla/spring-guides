@@ -59,6 +59,7 @@
         <module>accessing_data_neo4j</module>
         <module>validating_form_input</module>
         <module>actuator_service</module>
+        <module>messaging_jms</module>
     </modules>
 
 </project>
