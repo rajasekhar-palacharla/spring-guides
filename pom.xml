@@ -61,6 +61,7 @@
         <module>actuator_service</module>
         <module>messaging_jms</module>
         <module>batch_processing</module>
+        <module>securing_web</module>
     </modules>
 
 </project>
