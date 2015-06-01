@@ -62,6 +62,7 @@
         <module>messaging_jms</module>
         <module>batch_processing</module>
         <module>securing_web</module>
+        <module>rest_hateoas</module>
     </modules>
 
 </project>
