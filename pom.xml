@@ -63,6 +63,7 @@
         <module>batch_processing</module>
         <module>securing_web</module>
         <module>rest_hateoas</module>
+        <module>integration</module>
     </modules>
 
 </project>
