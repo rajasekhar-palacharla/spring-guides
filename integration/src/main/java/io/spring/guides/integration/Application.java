@@ -1,13 +1,11 @@
 package io.spring.guides.integration;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication()
 public class Application {
     public static void main(String[] args) throws Exception {
-        ConfigurableApplicationContext ctx = new SpringApplication("/blog/integration.xml").run(args);
-        System.out.println("Hit Enter to terminate");
-        System.in.read();
-        ctx.close();
+        SpringApplication.run("/blog/integration.xml", args);
     }
 }
