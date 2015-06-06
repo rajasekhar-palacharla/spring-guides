@@ -64,6 +64,7 @@
         <module>securing_web</module>
         <module>rest_hateoas</module>
         <module>integration</module>
+        <module>managing_transactions</module>
     </modules>
 
 </project>
