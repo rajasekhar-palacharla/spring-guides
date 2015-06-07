@@ -66,6 +66,7 @@
         <module>integration</module>
         <module>managing_transactions</module>
         <module>accessing_data_jpa</module>
+        <module>accessing_data_mongodb</module>
     </modules>
 
 </project>

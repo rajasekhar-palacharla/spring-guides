@@ -23,6 +23,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + "'}";
+        return "Customer{id=" + id + ", firstName='" + firstName + "', lastName='" + lastName + "'}";
     }
 }
