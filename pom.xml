@@ -65,6 +65,7 @@
         <module>rest_hateoas</module>
         <module>integration</module>
         <module>managing_transactions</module>
+        <module>accessing_data_jpa</module>
     </modules>
 
 </project>
