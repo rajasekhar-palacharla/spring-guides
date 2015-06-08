@@ -68,6 +68,7 @@
         <module>accessing_data_jpa</module>
         <module>accessing_data_mongodb</module>
         <module>serving_web_content</module>
+        <module>async_method</module>
     </modules>
 
 </project>
