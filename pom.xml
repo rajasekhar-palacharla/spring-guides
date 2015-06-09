@@ -71,6 +71,7 @@
         <module>async_method</module>
         <module>handling_form_submission</module>
         <module>messaging_reactor</module>
+        <module>spring_boot</module>
     </modules>
 
 </project>
