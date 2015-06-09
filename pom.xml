@@ -72,6 +72,7 @@
         <module>handling_form_submission</module>
         <module>messaging_reactor</module>
         <module>spring_boot</module>
+        <module>messaging_stomp_websocket</module>
     </modules>
 
 </project>
