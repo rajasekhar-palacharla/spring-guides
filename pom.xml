@@ -70,6 +70,7 @@
         <module>serving_web_content</module>
         <module>async_method</module>
         <module>handling_form_submission</module>
+        <module>messaging_reactor</module>
     </modules>
 
 </project>
