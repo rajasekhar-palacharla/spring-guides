@@ -73,6 +73,7 @@
         <module>messaging_reactor</module>
         <module>spring_boot</module>
         <module>messaging_stomp_websocket</module>
+        <module>handling_site_preference</module>
     </modules>
 
 </project>
