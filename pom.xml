@@ -76,6 +76,7 @@
         <module>handling_site_preference</module>
         <module>serving_mobile_web_content</module>
         <module>rest_service_cors</module>
+        <module>consuming_web_service</module>
     </modules>
 
 </project>
