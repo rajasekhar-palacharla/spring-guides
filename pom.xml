@@ -78,6 +78,7 @@
         <module>rest_service_cors</module>
         <module>consuming_web_service</module>
         <module>accessing_data_rest</module>
+        <module>accessing_neo4j_data_rest</module>
     </modules>
 
 </project>
