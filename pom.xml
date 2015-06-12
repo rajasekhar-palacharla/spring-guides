@@ -82,6 +82,7 @@
         <module>accessing_mongodb_data_rest</module>
         <module>producing_web_service</module>
         <module>caching</module>
+        <module>bookmarks</module>
     </modules>
 
 </project>
