@@ -80,6 +80,7 @@
         <module>accessing_data_rest</module>
         <module>accessing_neo4j_data_rest</module>
         <module>accessing_mongodb_data_rest</module>
+        <module>producing_web_service</module>
     </modules>
 
 </project>
