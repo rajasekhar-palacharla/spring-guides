@@ -1,19 +1,28 @@
 package io.spring.guides.bookmarks.rest;
 
+import io.spring.guides.bookmarks.hateoas.BookmarkResource;
 import io.spring.guides.bookmarks.model.AccountRepository;
 import io.spring.guides.bookmarks.model.Bookmark;
 import io.spring.guides.bookmarks.model.BookmarkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.util.Collection;
+import java.security.Principal;
+import java.util.stream.Collectors;
 
+/*
+ * curl -X POST -vu ios-bookmarks:123456 http://localhost:8080/oauth/token -H "Accept: application/json"
+ * -d "password=password&username=jlong&grant_type=password&scope=write&client_secret=123456&client_id=ios-bookmarks"
+ *
+ * curl -X GET http://127.0.0.1:8080/bookmarks -H "Authorization: Bearer <access_token>"
+ */
 @RestController
-@RequestMapping("/{username}/bookmarks")
+@RequestMapping("/bookmarks")
 public class BookmarkRestController {
     private BookmarkRepository bookmarkRepository;
     private AccountRepository accountRepository;
@@ -25,9 +34,10 @@ public class BookmarkRestController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> add(@PathVariable String username, @RequestBody Bookmark bookmark) {
-        this.validateUser(username);
-        return this.accountRepository.findByUsername(username).map(account -> {
+    public ResponseEntity<?> add(Principal principal, @RequestBody Bookmark bookmark) {
+        String username = principal.getName();
+        validateUser(username);
+        return accountRepository.findByUsername(username).map(account -> {
             Bookmark b = bookmarkRepository.save(new Bookmark(account, bookmark.getUri(), bookmark.getDescription()));
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.setLocation(ServletUriComponentsBuilder
@@ -39,19 +49,25 @@ public class BookmarkRestController {
     }
 
     @RequestMapping(value = "/{bookmarkId}", method = RequestMethod.GET)
-    public Bookmark readBookmark(@PathVariable String username, @PathVariable Long bookmarkId) {
-        this.validateUser(username);
-        return this.bookmarkRepository.findOne(bookmarkId);
+    public Bookmark readBookmark(Principal principal, @PathVariable Long bookmarkId) {
+        validateUser(principal.getName());
+        return bookmarkRepository.findOne(bookmarkId);
     }
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public Collection<Bookmark> readBookmarks(@PathVariable String username) {
-        this.validateUser(username);
-        return bookmarkRepository.findByAccountUsername(username);
+    public Resources<BookmarkResource> readBookmarks(Principal principal) {
+        String username = principal.getName();
+        validateUser(username);
+        return new Resources<>(
+                bookmarkRepository
+                        .findByAccountUsername(username)
+                        .stream()
+                        .map(BookmarkResource::new)
+                        .collect(Collectors.toList()));
     }
 
     private void validateUser(String username) {
-        this.accountRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(username));
+        accountRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(username));
     }
 }

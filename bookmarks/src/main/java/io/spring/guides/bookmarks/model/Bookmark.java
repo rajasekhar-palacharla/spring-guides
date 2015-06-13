@@ -18,7 +18,7 @@ public class Bookmark {
     @ManyToOne
     private Account account;
 
-    Bookmark() {
+    public Bookmark() {
     }
 
     public Bookmark(Account account, String uri, String description) {
