@@ -7,9 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.GlobalAuthenticationConfigurerAdapter;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+
+import static org.springframework.security.core.authority.AuthorityUtils.createAuthorityList;
 
 @Configuration
 public class WebSecurityConfiguration extends GlobalAuthenticationConfigurerAdapter {
@@ -23,13 +24,9 @@ public class WebSecurityConfiguration extends GlobalAuthenticationConfigurerAdap
 
     @Bean
     UserDetailsService userDetailsService() {
-        return username ->
-                accountRepository
-                        .findByUsername(username)
-                        .map(account -> new User(
-                                account.getUsername(), account.getPassword(), true, true, true, true,
-                                AuthorityUtils.createAuthorityList("USERS")))
-                        .orElseThrow(() -> new UserNotFoundException(
-                                String.format("Could not find the user '%s'", username)));
+        return username -> accountRepository
+                .findByUsername(username)
+                .map(account -> new User(account.getUsername(), account.getPassword(), createAuthorityList("USERS")))
+                .orElseThrow(() -> new UserNotFoundException(String.format("Could not find the user '%s'", username)));
     }
 }

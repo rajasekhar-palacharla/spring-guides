@@ -10,8 +10,11 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 
 @Configuration
 @EnableAuthorizationServer
-public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
+public class OAuth2AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
     public static final String APPLICATION_NAME = "bookmarks";
+    public static final String CLIENT_ID = "ios-" + APPLICATION_NAME;
+    public static final String CLIENT_SECRET = "123456";
+    public static final String SCOPE = "write";
     @Autowired
     AuthenticationManagerBuilder authenticationManager;
 
@@ -23,11 +26,11 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("ios-" + APPLICATION_NAME)
+                .withClient(CLIENT_ID)
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token")
                 .authorities("ROLE_USER")
-                .scopes("write")
+                .scopes(SCOPE)
                 .resourceIds(APPLICATION_NAME)
-                .secret("123456");
+                .secret(CLIENT_SECRET);
     }
 }

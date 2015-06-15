@@ -17,4 +17,8 @@ public class BookmarkResource extends ResourceSupport {
         add(linkTo(methodOn(BookmarkRestController.class).readBookmarks(null)).withRel("bookmarks"));
         add(linkTo(methodOn(BookmarkRestController.class).readBookmark(null, bookmark.getId())).withSelfRel());
     }
+
+    public Bookmark getBookmark() {
+        return bookmark;
+    }
 }

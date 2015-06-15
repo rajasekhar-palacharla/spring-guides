@@ -5,6 +5,7 @@ import io.spring.guides.bookmarks.model.AccountRepository;
 import io.spring.guides.bookmarks.model.Bookmark;
 import io.spring.guides.bookmarks.model.BookmarkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -49,9 +50,9 @@ public class BookmarkRestController {
     }
 
     @RequestMapping(value = "/{bookmarkId}", method = RequestMethod.GET)
-    public Bookmark readBookmark(Principal principal, @PathVariable Long bookmarkId) {
+    public Resource<BookmarkResource> readBookmark(Principal principal, @PathVariable Long bookmarkId) {
         validateUser(principal.getName());
-        return bookmarkRepository.findOne(bookmarkId);
+        return new Resource<>(new BookmarkResource(bookmarkRepository.findOne(bookmarkId)));
     }
 
 
